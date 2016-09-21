@@ -1,0 +1,29 @@
+---
+title: "GGPlot - Analysis"
+author: "Rahul"
+date: "September 20, 2016"
+output: html_document
+---
+
+```{r plots}
+library(ggplot2)
+library(gridExtra)
+df_train <- read.csv('C:\\Users\\Rahul\\Documents\\Capstone\\Bakery Inventory\\random\\Train2_01.csv')
+
+summary(df_train)
+
+grid.arrange(ggplot(data = df_train, aes( x = 1, y = 'Sales_this_week.pesos.' ) ) +     geom_jitter(alpha = 0.1 ) + 
+    geom_boxplot(alpha = 0.2, color = 'red' ) , 
+    ggplot(data = df_train, aes( x = 'Product_ID' ) ) +   
+      geom_histogram(bins=30 ),ncol=2)
+
+
+ggplot(data = df_train, aes( x = 1, y = 'Sales_unit_this_week' ) ) +     geom_jitter(alpha = 0.1 ) + 
+    geom_boxplot(alpha = 0.2, color = 'red' )
+
+ggplot(data = df_train, aes( x = 'Sales_unit_this_week' ) ) +   
+      geom_histogram(bins=30 )
+
+
+```
+
